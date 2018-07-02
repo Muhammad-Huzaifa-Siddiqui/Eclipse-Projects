@@ -1,0 +1,21 @@
+package IPClass;
+
+import java.util.Scanner;
+
+public class IpApp {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method
+		IPClassIdentifier obj = new IPClassIdentifier();
+		Scanner in = new Scanner(System.in);
+		System.out.println("Enter IP address or press q to exit:");
+		String ip = in.next();
+		try {
+			obj.DisplayIPClass(ip);
+		} 
+		finally {
+			in.close();
+			}
+	}
+
+}

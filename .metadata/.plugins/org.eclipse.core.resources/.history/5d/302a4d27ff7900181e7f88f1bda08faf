@@ -1,0 +1,38 @@
+package IPClass;
+
+import java.util.Scanner;
+import java.util.regex.*;
+
+public class IpApp {
+	public static final String regexPattern = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
+	private static Scanner in;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method
+		IPClassIdentifier obj = new IPClassIdentifier();
+		in = new Scanner(System.in);
+		Pattern ipv4 = Pattern.compile(regexPattern);
+		System.out.println("Enter IP address:");
+		String ip = in.next();
+		if (ipv4.matcher(ip).matches()) {
+			byte[] convert = ip.getBytes();
+			StringBuilder binary = new StringBuilder();
+			for(int i =0;i<convert.length;i++) {
+				System.out.println(""+convert[i]);
+			}
+			for (byte b : convert) {
+				int val = b;
+				for (int i = 0; i < 8; i++) {
+					binary.append((val & 128) == 0 ? 0 : 1);
+					val <<= 1;
+				}
+				binary.append(' ');
+			}
+			System.out.println("Ip Address " + ip + " in binary = " + binary);
+
+			obj.DisplayIPClass(ip);
+		} else
+			System.out.println("Wrong IP address");
+	}
+
+}

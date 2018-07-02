@@ -1,0 +1,33 @@
+package IPClass;
+
+
+public class IPClassIdentifier {
+	private String ip;
+	private String ipclass;
+	public IPClassIdentifier(String ip) {
+		this.ip = ip;
+		this.ipclass = DisplayIPClass(ip);
+	}
+	public void setIP(String giveIP) {
+		this.ip = giveIP;
+	}
+	public String getIP() {
+		return ip;
+	}
+	public String DisplayIPClass(String input) {
+		 int str = Integer.parseInt(input.substring(0,input.indexOf(".")));
+		 if(str<=10&&str>=126) {
+			 return "IP is Class A";
+		 }else if(str<=128&&str>=191) {
+			 return "IP is Class B";
+		 }else if(str<=192&&str>=223) {
+			 return "IP is Class C";
+		 }else if(str<=224&&str>=239) {
+			 return "IP is Class D";
+		 }else if(str<=240&&str>=254) {
+			 return "IP is Class E";
+		 }else
+			 return "Range out of bounds";
+	}
+
+}

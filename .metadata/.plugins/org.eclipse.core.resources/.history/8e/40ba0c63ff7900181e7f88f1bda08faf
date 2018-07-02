@@ -1,0 +1,39 @@
+package IPClass;
+
+import java.util.Arrays;
+public class IPClassIdentifier {
+	// private String ip;
+	// private String ip_class;
+	
+
+	public IPClassIdentifier() {
+	}
+
+	public void DisplayIPClass(String input) {
+			int str = Integer.parseInt(input.substring(0, input.indexOf(".")));
+			if (str >= 10 && str <= 126) {
+				System.out.println("IP is Class a");
+			} else if (str >= 128 && str <= 191) {
+				System.out.println("IP is Class b");
+			} else if (str >= 192 && str <= 223) {
+				System.out.println("IP is Class c");
+			} else if (str >= 224 && str <= 239) {
+				System.out.println("IP is Class d");
+			} else if (str >= 240 && str <= 254) {
+				System.out.println("IP is Class e");
+			} else
+				System.out.println("out of range");
+			
+	
+	}
+	 
+	public void CovertBinary(String in) {
+		int[] arr = new int[8];
+		Arrays.fill(arr, 0);
+		String str = in.substring(0, in.indexOf("."));
+		String str1 = in.substring(in.indexOf(".")+1, in.indexOf("."));
+		String str2 =  in.substring(in.indexOf(".")+1, in.indexOf("."));
+		String str3 =  in.substring(in.indexOf(".")+1, in.length());
+		System.out.println(str+" "+str1+" "+str2+" "+str3);
+	}
+}

@@ -1,0 +1,43 @@
+package IPClass;
+
+import java.util.Scanner;
+import java.util.regex.*;
+
+public class IpApp {
+	public static final String regexPattern = "(([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}([01]?\\d\\d?|2[0-4]\\d|25[0-5])";
+	private static Scanner in;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method
+		IPClassIdentifier obj = new IPClassIdentifier();
+		in = new Scanner(System.in);
+		Pattern ipv4 = Pattern.compile(regexPattern);
+		System.out.println("Enter IP address:");
+		String ip = in.next();
+//		System.out.println("Enter subnetmask:");																//submask not explicit
+//		String subMask = in.next();
+		String ip1 = ip.substring(0, ip.indexOf("/"));
+		String subnetMask = ip.substring(ip.indexOf("/")+1, ip.length());
+		System.out.println(subnetMask);
+		obj.CovertBinary(ip1);
+		if (ipv4.matcher(ip1).matches()) {
+//			byte[] convert = ip.getBytes();
+//			StringBuilder binary = new StringBuilder();
+//			for (byte b : convert) {
+//				int val = b;
+//				for (int i = 0; i < 8; i++) {
+//					binary.append((val & 128) == 0 ? 0 : 1);
+//					val <<= 1;
+//				}
+//				binary.append(' ');
+//			}
+//			System.out.println("Ip Address " + ip + " in binary = " + binary);
+
+			obj.DisplayIPClass(ip1);
+			obj.CovertBinary(ip1);
+			
+		} else
+			System.out.println("Wrong IP address");
+	}
+
+}

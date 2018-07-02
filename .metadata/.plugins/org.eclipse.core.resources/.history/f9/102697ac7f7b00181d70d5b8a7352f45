@@ -1,0 +1,70 @@
+package IPClass;
+
+import java.util.*;
+
+public class IPClassIdentifier {
+	// private String ip;
+	// private String ip_class;
+	private String error = "subnet mask not valid";
+
+	public IPClassIdentifier() {
+	}
+
+	public void DisplayIPClass(String input) {
+		int str = Integer.parseInt(input.substring(0, input.indexOf(".")));
+		if (str >= 10 && str <= 126) {
+			System.out.println(input + "ip is of class A.\nDefault subnet is 255.0.0.0");
+		} else if (str >= 128 && str <= 191) {
+			System.out.println(input + "ip is of class B.\nDefault subnet is 255.255.0.0");
+		} else if (str >= 192 && str <= 223) {
+			System.out.println(input + "ip is of class C.\nDefault subnet is 255.255.255.0");
+		} else if (str >= 224 && str <= 239) {
+			System.out.println(input + "ip is of class D.\n");
+		} else if (str >= 240 && str <= 254) {
+			System.out.println(input + "ip is of class E.\n");
+		} else
+			System.out.println(input + "ip is out of range");
+
+	}
+
+	public void CovertBinary(String in,String s) {
+		String[] arr = new String[8];
+		String[] octetArray = in.split("\\.");
+		for (String string : octetArray) {
+			int octet = Integer.parseInt(string);
+			String binaryOctet = Integer.toBinaryString(octet);
+			System.out.print(binaryOctet + "  ");
+		}
+		// int SubnetMask = Integer.parseInt(s);
+		// System.out.println("\n\n"+Integer.toBinaryString(SubnetMask));
+	}
+	
+	public void subnetToBinary(String in) {
+		int count =0;
+		int zeroCount =0;
+		int flag =0;
+		int str = Integer.parseInt(in);
+		if(str<2||str>32) {
+			System.out.print(error);
+		}else
+		for(int i =0;i<str;i++) {
+			System.out.print(1);
+			count++;
+			flag++;
+			if(count == 8&&flag<32) {
+				System.out.print(".");
+				count =0;
+			}
+		}
+		for(int j=0;j<32-str;j++) {
+			System.out.print(0);
+			zeroCount++;
+			{
+				if(zeroCount==8&&flag<32) {
+					System.out.println(".");
+				}
+			}
+		}
+	}
+
+}

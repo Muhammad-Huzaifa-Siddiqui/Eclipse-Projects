@@ -1,0 +1,46 @@
+package IPClass;
+
+import java.util.Arrays;
+public class IPClassIdentifier {
+	// private String ip;
+	// private String ip_class;
+	
+
+	public IPClassIdentifier() {
+	}
+
+	public String DisplayIPClass(String input) {
+			int str = Integer.parseInt(input.substring(0, input.indexOf(".")));
+			if (str >= 10 && str <= 126) {
+				System.out.println(input + "ip is of class A.\nDefault subnet is 255.0.0.0");
+				return "A";
+			} else if (str >= 128 && str <= 191) {
+				System.out.println(input + "ip is of class B.\nDefault subnet is 255.255.0.0");
+				return "B";
+			} else if (str >= 192 && str <= 223) {
+				System.out.println(input + "ip is of class C.\nDefault subnet is 255.255.255.0");
+				return "C";
+			} else if (str >= 224 && str <= 239) {
+				System.out.println(input + "ip is of class D.\n");
+				return "D";
+			} else if (str >= 240 && str <= 254) {
+				System.out.println(input + "ip is of class E.\n");
+				return "A";
+			} else
+				return (input + "ip is out of range");
+			
+	
+	}
+	 
+	public void CovertBinary(String in) {
+		int[] arr = new int[8];
+		Arrays.fill(arr, 0);
+//		String str = in.substring(0, in.indexOf("."));
+//		String str1 = in.substring(in.indexOf(".")+1, in.indexOf("."));
+//		String str2 =  in.substring(in.indexOf(".")+1, in.indexOf("."));
+//		String str3 =  in.substring(in.indexOf(".")+1, in.length()-1);
+//		System.out.println(str+" "+str1+" "+str2+" "+str3);
+		
+		
+	}
+}
